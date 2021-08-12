@@ -97,6 +97,25 @@ void process_input(string input, const char*current_directory){
 
     // after we clear out the possibilities of single arguments, we can begin with multiple arguments
 
+    // cd command 
+    char *token = strtok((char*)input.c_str(), " ");
+    int skip_tok = 0;
+    while (token)
+    {
+        if (skip_tok == 0)
+        {
+            continue;
+        }
+
+        if (skip_tok == 1)
+        {
+            printf("%s", token);
+            directory = strcat((char*)directory, token);
+            break;
+        }
+
+        token = strtok(NULL, " ");
+    }
 }
 
 int main()
